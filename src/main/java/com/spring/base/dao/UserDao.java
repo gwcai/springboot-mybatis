@@ -17,6 +17,10 @@ public interface UserDao {
     @Select("select * from user where id=#{id}")
     public User getUserById(@Param("id") String id);
 
+    /**插入新用户
+     * @param user
+     * @return
+     */
     @Options(useGeneratedKeys = true,keyProperty = "id")
     @Insert("insert into user(name,gender) values(#{name},#{gender})")
     public int insert(User user);
