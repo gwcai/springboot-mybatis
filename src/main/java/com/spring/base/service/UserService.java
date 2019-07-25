@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @author FUDIAN
  */
@@ -14,6 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     @Autowired
     private UserDao userDao;
+
+    public List<User> selectAll(){
+        return userDao.selectAll();
+    }
 
     /**只读数据，提高效率
      * @param id

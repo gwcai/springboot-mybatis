@@ -4,17 +4,25 @@ import com.spring.base.domain.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author FUDIAN
  */
 @Mapper
 @Repository
 public interface UserDao {
+    /**查询所有用户
+     * @return
+     */
+    @Select("select * from \"user\"")
+    public List<User> selectAll();
+
     /**通过id查找用户
      * @param id
      * @return
      */
-    @Select("select * from user where id=#{id}")
+    @Select("select * from \"user\" where id=#{id}")
     public User getUserById(@Param("id") String id);
 
     /**插入新用户
@@ -22,6 +30,6 @@ public interface UserDao {
      * @return
      */
     @Options(useGeneratedKeys = true,keyProperty = "id")
-    @Insert("insert into user(name,gender) values(#{name},#{gender})")
+    @Insert("insert into \"user\"(id,name,gender,age) values(#{id},#{name},#{gender},#{age)")
     public int insert(User user);
 }

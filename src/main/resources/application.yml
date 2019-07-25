@@ -4,3 +4,7 @@ spring:
     password: 2010
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/springmvc
+
+mybatis:
+    type-aliases-package: com.spring.base.dao
+    mapper-locations: classpath:mapper/*.xml

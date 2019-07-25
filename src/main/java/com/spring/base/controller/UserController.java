@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author FUDIAN
  */
-@RestController("/user")
+@RestController
 public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/user/{id}")
     User getUserById(@PathVariable("id") String userId){
         return userService.getUserById(userId);
     }
