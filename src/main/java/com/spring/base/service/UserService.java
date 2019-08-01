@@ -44,4 +44,14 @@ public class UserService {
     public int insert(User user) {
         return userDao.insert(user);
     }
+
+    /**
+     * 更新数据
+     * @param user
+     * @return
+     */
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = {})
+    public int update(User user){
+        return userDao.updateUserIgnoreNullByPrimaryKey(user);
+    }
 }

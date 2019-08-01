@@ -23,7 +23,7 @@ public class UserDaoProvider {
             setSql.append("age = #{user.age},");
         }
         if(setSql.length() > 0){
-            sql.append(setSql.substring(0,setSql.length() - 1)).append("where id=#{user.id)");
+            sql.append(setSql.substring(0,setSql.length() - 1)).append(" where id=#{user.id}");
         }else{
             throw new Exception("none element to update");
         }

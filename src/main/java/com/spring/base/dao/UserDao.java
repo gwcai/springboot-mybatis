@@ -31,10 +31,14 @@ public interface UserDao {
      * @return
      */
     @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
-    @Insert("insert into \"user\"(id,name,gender,age) values(#{id},#{name},#{gender},#{age)")
+    @Insert("insert into \"user\" (id,name,gender,age) values(#{id},#{name},#{gender},#{age})")
     public int insert(User user);
 
 
+    /**更新用户
+     * @param user
+     * @return
+     */
     @UpdateProvider(type = UserDaoProvider.class,method ="updateIgnoreNullByPrimaryKey")
-    public int updateUserIgnoreNullByPrimaryKey();
+    public int updateUserIgnoreNullByPrimaryKey(@Param("user")User user);
 }
