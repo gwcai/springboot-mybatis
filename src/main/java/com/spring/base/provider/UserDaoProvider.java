@@ -5,6 +5,9 @@ import org.springframework.util.StringUtils;
 
 import java.util.Map;
 
+/**
+ * @author FUDIAN
+ */
 public class UserDaoProvider {
     public String updateIgnoreNullByPrimaryKey(Map<String,Object> map) throws Exception {
         User user = (User) map.get("user");
