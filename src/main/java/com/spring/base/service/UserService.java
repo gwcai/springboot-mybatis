@@ -1,5 +1,7 @@
 package com.spring.base.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.spring.base.dao.UserDao;
 import com.spring.base.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +19,11 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    public List<User> selectAll(){
-        return userDao.selectAll();
+    public PageInfo selectAll(int pageIndex,int pageSize){
+        PageHelper.startPage(pageIndex,pageSize);
+        List<User> users = userDao.selectAll();
+        PageInfo page = new PageInfo(users);
+        return page;
     }
 
     /**只读数据，提高效率

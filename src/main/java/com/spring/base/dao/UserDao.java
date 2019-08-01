@@ -1,6 +1,7 @@
 package com.spring.base.dao;
 
 import com.spring.base.domain.User;
+import com.spring.base.provider.UserDaoProvider;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -29,7 +30,11 @@ public interface UserDao {
      * @param user
      * @return
      */
-    @Options(useGeneratedKeys = true,keyProperty = "id")
+    @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
     @Insert("insert into \"user\"(id,name,gender,age) values(#{id},#{name},#{gender},#{age)")
     public int insert(User user);
+
+
+    @UpdateProvider(type = UserDaoProvider.class,method ="updateIgnoreNullByPrimaryKey")
+    public int updateUserIgnoreNullByPrimaryKey();
 }
