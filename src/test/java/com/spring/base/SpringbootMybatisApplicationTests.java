@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {SpringbootMybatisApplication.class})
 public class SpringbootMybatisApplicationTests {
@@ -45,5 +47,11 @@ public class SpringbootMybatisApplicationTests {
         user.setAge(22);
         int result = userService.update(user);
         System.out.println(result);
+    }
+
+    @Test
+    public void getUsersByName(){
+        List<User> userList = userService.getUsersByName("张珊");
+        System.out.println(JSON.toJSONString(userList));
     }
 }

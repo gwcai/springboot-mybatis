@@ -54,4 +54,12 @@ public class UserService {
     public int update(User user){
         return userDao.updateUserIgnoreNullByPrimaryKey(user);
     }
+
+    /**查找用户
+     * @param name
+     * @return
+     */
+    public List<User> getUsersByName(String name){
+        return userDao.getUsersByName(name,"id");
+    }
 }

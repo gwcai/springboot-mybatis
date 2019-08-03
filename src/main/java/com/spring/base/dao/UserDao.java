@@ -41,4 +41,13 @@ public interface UserDao {
      */
     @UpdateProvider(type = UserDaoProvider.class,method ="updateIgnoreNullByPrimaryKey")
     public int updateUserIgnoreNullByPrimaryKey(@Param("user")User user);
+
+
+    /**根据姓名查找用户
+     * @param name
+     * @param orderColumn
+     * @return
+     */
+    @SelectProvider(type = UserDaoProvider.class,method ="buildGetUsersByName")
+    public List<User> getUsersByName(@Param("name") String name,@Param("orderColumn") String orderColumn);
 }

@@ -1,6 +1,7 @@
 package com.spring.base.provider;
 
 import com.spring.base.domain.User;
+import org.apache.ibatis.jdbc.SQL;
 import org.springframework.util.StringUtils;
 
 import java.util.Map;
@@ -27,9 +28,18 @@ public class UserDaoProvider {
         }
         if(setSql.length() > 0){
             sql.append(setSql.substring(0,setSql.length() - 1)).append(" where id=#{user.id}");
-        }else{
+        }else {
             throw new Exception("none element to update");
         }
         return sql.toString();
+    }
+
+    public String buildGetUsersByName(String name,String orderColumn){
+        return new SQL(){{
+            SELECT("*");
+            FROM("\"user\"");
+            WHERE("name like #{name} || '%'");
+            ORDER_BY(orderColumn);
+        }}.toString();
     }
 }
