@@ -17,7 +17,7 @@
     <properties>
         <java.version>1.8</java.version>
         <mybatis.version>2.0.1</mybatis.version>
-        <postgresql.version>42.2.5</postgresql.version>
+        <postgresql.version>42.4.1</postgresql.version>
     </properties>
 
     <dependencies>
